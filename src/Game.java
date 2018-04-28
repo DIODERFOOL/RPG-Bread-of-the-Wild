@@ -12,8 +12,17 @@ public class Game extends Canvas implements Runnable {
 	private Thread thread;
 	private boolean runnig = false;
 
+	private Handler h;
+
+
 	public Game() {
+		h = new Handler();
+
+		this.addKeyListener(new KInput(h));
+
 		new Window(WIDTH, HEIGTH, "Bread of the Wild", this);
+
+		h.addObject(new PJ(WIDTH/2-32, HEIGTH/2-32, ID.Player));
 	}
 
 	public synchronized void start() {
@@ -60,7 +69,7 @@ public class Game extends Canvas implements Runnable {
 	}
 
 	private void tick() {
-
+		h.tick();
 	}
 
 	private void render() {
@@ -68,12 +77,14 @@ public class Game extends Canvas implements Runnable {
 		if(bs == null) {
 			this.createBufferStrategy(3);
 			return;
-		}
+		}	
 
 		Graphics g = bs.getDrawGraphics();
 
 		g.setColor(Color.black);
 		g.fillRect(0,0, WIDTH, HEIGTH);
+
+		h.render(g);
 
 		g.dispose();
 		bs.show();
