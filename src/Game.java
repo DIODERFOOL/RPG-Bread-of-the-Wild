@@ -4,6 +4,7 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 
 public class Game extends Canvas implements Runnable {
 
@@ -14,9 +15,18 @@ public class Game extends Canvas implements Runnable {
 
 	private Handler h;
 
+	public static BufferedImage ss;
+
 	public Game() {
 		h = new Handler();
 
+		ImageLoader loader = new ImageLoader();
+		try {
+			ss = loader.load("/testcharacter.png");
+		}catch (Exception e) {
+			e.printStackTrace();	
+		}
+		
 		this.addKeyListener(new KInput(h));
 
 		new Window(WIDTH, HEIGTH, "Bread of the Wild", this);

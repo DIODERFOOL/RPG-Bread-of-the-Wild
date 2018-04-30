@@ -1,18 +1,21 @@
 package botw;
 
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 import javax.imageio.ImageIO;
+import java.io.IOException;
+import java.io.*;
 
 public class ImageLoader {
-	
-	public static BufferedImage loadImage(String path) {
-		try {
-			return ImageIO.read(ImageLoader.class.getResource(path));
-		} catch (Exception e) {
+
+	private BufferedImage image;
+
+	public BufferedImage load(String path) {
+		try{
+			this.image = ImageIO.read(getClass().getResource(path));
+		}catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("Image not loaded restart game");
+			System.out.println("Image not Loaded");
 		}
-		return null;
-	}	
+		return image;
+	}
 }
