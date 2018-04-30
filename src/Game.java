@@ -14,7 +14,6 @@ public class Game extends Canvas implements Runnable {
 
 	private Handler h;
 
-
 	public Game() {
 		h = new Handler();
 
