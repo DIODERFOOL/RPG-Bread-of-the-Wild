@@ -3,6 +3,7 @@ package botw;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.io.File;
 
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -29,9 +30,11 @@ public class Game extends Canvas implements Runnable {
 
 		new Window(WIDTH, HEIGTH, "Bread of the Wild", this);
 
-		h.addObject(new PJ(WIDTH/2-100, HEIGTH/2-100, ID.Player));
+		h.addObject(new PJ(WIDTH/2-32, HEIGTH/2-32, ID.Player));
 
-		testImage = loadImage("../images/testmap.png");
+		testImage = loadImage();
+
+
 	}
 
 	public synchronized void start() {
@@ -81,9 +84,9 @@ public class Game extends Canvas implements Runnable {
 		h.tick();
 	}
 
-	private BufferedImage loadImage(String path){
+	private BufferedImage loadImage(){
 		try{
-			BufferedImage loadedImage= ImageIO.read(Game.class.getResource(path));
+			BufferedImage loadedImage= ImageIO.read(new File("testmap.png"));
 			BufferedImage formattedimage= new BufferedImage(loadedImage.getWidth(), loadedImage.getHeight(),BufferedImage.TYPE_INT_RGB);
 			formattedimage.getGraphics().drawImage(loadedImage, 0,0, null);
 
@@ -103,16 +106,18 @@ public class Game extends Canvas implements Runnable {
 			this.createBufferStrategy(3);
 			return;
 		}
-
 		Graphics g = bs.getDrawGraphics();
+		super.paint(g);
 
-		g.setColor(Color.red);
-		g.fillRect(0,0, WIDTH, HEIGTH);
+	//(testImage,0,0,10,10);
+		//g.setColor(Color.red);
+		//g.fillRect(0,0, WIDTH, HEIGTH);
 
 		h.render(g);
-
 		g.dispose();
 		bs.show();
+
+		
 	}
 
 

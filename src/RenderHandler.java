@@ -8,8 +8,8 @@ public class RenderHandler{
 
 
   public RenderHandler(int width, int height){
-    view =new BufferedImage(width, heigth, BufferedImage.TYPE_INT_RGB);
-    pixels = ((DataBufferInt)view.getRaster().getDataBuffer())getData();
+    view =new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+    pixels = ((DataBufferInt)view.getRaster().getDataBuffer()).getData();
 
     /*for(int heightI =0;heightI < height; heigthI++){
       int randomPixel =(int)(Math.random() * 0xFFFFFF);
@@ -25,7 +25,7 @@ public class RenderHandler{
   }
 
   public void renderImage(BufferedImage image, int xPosition, int yPosition, int xZoom, int yZoom ){
-      int [] imagePixels = ((DataBufferInt)image.getRaster().getDataBuffer())getData();
+      int [] imagePixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
       for (int y=0; y< image.getWidth(); y++){
         for (int x=0; x<image.getWidth();x++){
           for (int yZoomPosition =0; yZoomPosition <yZoomPosition; yZoomPosition++){
