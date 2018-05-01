@@ -1,19 +1,20 @@
 interface Character{
-	setName(String name);
-	getName();
 
-	setLife(int life);
-	getLife();
+	void setName(String name);
+	String getName();
 
-	setDamage(double dmg);
-	getDamage();
+	void setLife(int life);
+	int getLife();
 
-	setDefense(double dfs);
-	getDefense();
+	void setDamage(double dmg);
+	double getDamage();
 
-	setArmor(double amr);
-	getArmor();
+	void setDefense(double dfs);
+	double getDefense();
 
-	/*setWeapon(Weapons wpn);
-	getWeapon();*/
+	void setArmor(double amr);
+	double getArmor();
+
+	/*void setWeapon(Weapons wpn);
+	Weapons getWeapon();*/
 }
