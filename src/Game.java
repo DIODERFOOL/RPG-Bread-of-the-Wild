@@ -3,14 +3,8 @@ package botw;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.io.File;
-
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
-
-import javax.imageio.ImageIO;
-
-import java.io.IOException;
 
 public class Game extends Canvas implements Runnable {
 
@@ -20,21 +14,24 @@ public class Game extends Canvas implements Runnable {
 	private boolean runnig = false;
 
 	private Handler h;
-	private BufferedImage testImage;
 
+	public static BufferedImage ss;
 
 	public Game() {
 		h = new Handler();
+
+		ImageLoader loader = new ImageLoader();
+		try {
+			ss = loader.load("/testcharacter.png");
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		this.addKeyListener(new KInput(h));
 
 		new Window(WIDTH, HEIGTH, "Bread of the Wild", this);
 
 		h.addObject(new PJ(WIDTH/2-32, HEIGTH/2-32, ID.Player));
-
-		testImage = loadImage();
-
-
 	}
 
 	public synchronized void start() {
@@ -84,45 +81,26 @@ public class Game extends Canvas implements Runnable {
 		h.tick();
 	}
 
-	private BufferedImage loadImage(){
-		try{
-			BufferedImage loadedImage= ImageIO.read(new File("testmap.png"));
-			BufferedImage formattedimage= new BufferedImage(loadedImage.getWidth(), loadedImage.getHeight(),BufferedImage.TYPE_INT_RGB);
-			formattedimage.getGraphics().drawImage(loadedImage, 0,0, null);
-
-			return formattedimage;
-
-		}catch(IOException exception ){
-			exception.printStackTrace();
-			return null;
-		}
-
-	}
-
-
 	private void render() {
 		BufferStrategy bs = this.getBufferStrategy();
 		if(bs == null) {
 			this.createBufferStrategy(3);
 			return;
 		}
-		Graphics g = bs.getDrawGraphics();
-		super.paint(g);
 
-	//(testImage,0,0,10,10);
-		//g.setColor(Color.red);
-		//g.fillRect(0,0, WIDTH, HEIGTH);
+		Graphics g = bs.getDrawGraphics();
+
+		g.setColor(Color.black);
+		g.fillRect(0,0, WIDTH, HEIGTH);
 
 		h.render(g);
+
 		g.dispose();
 		bs.show();
-
-		
 	}
 
 
 	public static void main(String[] args) {
 		new Game();
 	}
-
 }
