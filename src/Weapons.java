@@ -1,3 +1,5 @@
+package botw;
+
 public abstract class Weapons{
 
 	private String type;
@@ -21,17 +23,17 @@ public abstract class Weapons{
 
 	public abstract double getDmg();
 
-	public abstract void set(double rare);
+	public abstract void setRare(double rare);
 
-	public abstract double get();
+	public abstract double getRare();
 
-	public abstract void setType(double mp);
+	public abstract void setMp(double mp);
 
-	public abstract double getType();
+	public abstract double getMp();
 
-	public abstract void setType(double range);
+	public abstract void setRange(double range);
 
-	public abstract double getType();
+	public abstract double getRange();
 
 
 }

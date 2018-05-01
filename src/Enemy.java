@@ -1,13 +1,15 @@
+package botw;
+
 public class Enemy implements Character{
 
 	private String name;
-	private int life;
+	private int hp;
 	private double dmg, dfs, amr;
 	// private Weapons wpn;
 
-	public Enemy(String name, int life, double dmg, double dfs, double amr){	
+	public Enemy(String name, int hp, double dmg, double dfs, double amr){	
 		this.name = name;
-		this.life = life;
+		this.hp = hp;
 		this.dmg = dmg;
 		this.dfs = dfs;
 		this.amr = amr;
@@ -21,11 +23,11 @@ public class Enemy implements Character{
 		return name;
 	}
 
-	public void setLife(int life){
-		this.life = life;
+	public void setLife(int hp){
+		this.hp = hp;
 	}
 	public int getLife(){
-		return life;
+		return hp;
 	}
 
 	public void setDamage(double dmg){

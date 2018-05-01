@@ -1,3 +1,5 @@
+package botw;
+
 public class Player implements Character{
 
 	private String name;
@@ -8,7 +10,7 @@ public class Player implements Character{
 
 	public Player(String name, int hp, double dmg, double dfs, double amr){	
 		this.name = name;
-		this.hp = life;
+		this.hp = hp;
 		this.dmg = dmg;
 		this.dfs = dfs;
 		this.amr = amr;
@@ -24,7 +26,7 @@ public class Player implements Character{
 	}
 
 	public void setLife(int hp){
-		this.hp = life;
+		this.hp = hp;
 	}
 	public int getLife(){
 		return hp;
