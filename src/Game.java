@@ -17,8 +17,20 @@ public class Game extends Canvas implements Runnable {
 
 	public static BufferedImage ss;
 
+/*----------Main Menu Stuff--------------*/
+	private Menu menu;
+
+	public static enum STATE{
+		MENU,
+		GAME
+	};
+
+	public static STATE State = STATE.MENU; 
+
+
 	public Game() {
 		h = new Handler();
+		menu  = new Menu();
 
 		ImageLoader loader = new ImageLoader();
 		try {
@@ -28,6 +40,7 @@ public class Game extends Canvas implements Runnable {
 		}
 		
 		this.addKeyListener(new KInput(h));
+		this.addMouseListener(new MenuInput() );
 
 		new Window(WIDTH, HEIGTH, "Bread of the Wild", this);
 
@@ -78,7 +91,9 @@ public class Game extends Canvas implements Runnable {
 	}
 
 	private void tick() {
-		h.tick();
+		if(State == STATE.GAME){
+			h.tick();
+		}
 	}
 
 	private void render() {
@@ -93,7 +108,12 @@ public class Game extends Canvas implements Runnable {
 		g.setColor(Color.black);
 		g.fillRect(0,0, WIDTH, HEIGTH);
 
-		h.render(g);
+		if(State == STATE.GAME){
+			h.render(g);
+		}
+		else if(State == STATE.MENU){
+			menu.render(g);
+		}
 
 		g.dispose();
 		bs.show();
