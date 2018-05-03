@@ -17,11 +17,12 @@ public class KInput extends KeyAdapter {
 		for (int i = 0; i < h.ob.size(); i++) {
 			Gobject to = h.ob.get(i);
 
+
 			if (to.getID() == ID.Mapa) {
-				if (key == KeyEvent.VK_W) to.setVelY( 5);
-				if (key == KeyEvent.VK_S) to.setVelY(-5);
-				if (key == KeyEvent.VK_A) to.setVelX( 5);
-				if (key == KeyEvent.VK_D) to.setVelX(-5);
+				if (key == KeyEvent.VK_W) to.setVelY( 3);
+				if (key == KeyEvent.VK_S) to.setVelY(-3);
+				if (key == KeyEvent.VK_A) to.setVelX( 3);
+				if (key == KeyEvent.VK_D) to.setVelX(-3);
 
 			}
 			if (to.getID() == ID.Player) {
