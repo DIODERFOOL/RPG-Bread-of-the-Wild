@@ -21,7 +21,7 @@ public class KInput extends KeyAdapter {
 				if (key == KeyEvent.VK_W) to.setVelY(-5);
 				if (key == KeyEvent.VK_S) to.setVelY( 5);
 				if (key == KeyEvent.VK_A) to.setVelX(-5);
-				if (key == KeyEvent.VK_D) to.setVelX( 5);
+				if (key == KeyEvent.VK_D) to.setVelX( 5);	
 
 			}
 		}

@@ -42,7 +42,5 @@ public class Menu{
 		g.drawString("Credits", creditsButton.x + 15, creditsButton.y + 30);
 		g2d.draw(creditsButton);
 
-
-
 	}
 }

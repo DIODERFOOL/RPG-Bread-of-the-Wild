@@ -8,6 +8,9 @@ interface Character{
 	void setLife(int life);
 	int getLife();
 
+	void setExperience(double xp);
+	double getExperience();
+
 	void setDamage(double dmg);
 	double getDamage();
 

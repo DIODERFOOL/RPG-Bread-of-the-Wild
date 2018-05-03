@@ -4,7 +4,7 @@ public class Enemy implements Character{
 
 	private String name;
 	private int hp;
-	private double dmg, dfs, amr;
+	private double dmg, dfs, amr, xp;
 	// private Weapons wpn;
 
 	public Enemy(String name, int hp, double dmg, double dfs, double amr){	
@@ -35,6 +35,13 @@ public class Enemy implements Character{
 	}
 	public double getDamage(){
 		return dmg;
+	}
+
+	public void setExperience(double xp){
+		this.xp = xp;
+	}
+	public double getExperience(){
+		return xp;
 	}
 
 	public void setDefense(double dfs){

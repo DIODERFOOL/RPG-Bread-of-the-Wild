@@ -12,6 +12,8 @@ import java.awt.Dimension;
 public class Game extends Canvas implements Runnable {
 
 	public static final int WIDTH = 800, HEIGTH = WIDTH/12*9;
+	public static final int SCALE = 2;
+	public final String TITLE = "Bread of the Wild";
 
 	private Thread thread;
 	private boolean runnig = false;
@@ -27,7 +29,6 @@ public class Game extends Canvas implements Runnable {
 
 /*----------Main Menu Stuff--------------*/
 	private Menu menu;
-
 	public static enum STATE{
 		MENU,
 		GAME
@@ -35,6 +36,8 @@ public class Game extends Canvas implements Runnable {
 
 	public static STATE State = STATE.MENU; 
 
+
+	/*----------------------------------*/
 
 	public Game() {
 		h = new Handler();
@@ -48,7 +51,7 @@ public class Game extends Canvas implements Runnable {
 		}
 		
 		this.addKeyListener(new KInput(h));
-		this.addMouseListener(new MenuInput() );
+		this.addMouseListener(new MenuInput() ); //Mouse Input
 
 		new Window(WIDTH, HEIGTH, "Bread of the Wild", this);
 
@@ -156,6 +159,12 @@ public class Game extends Canvas implements Runnable {
 
 
 	public static void main(String[] args) {
-		new Game();
+		
+		Game game = new Game();
+		game.setPreferredSize(new Dimension(WIDTH*SCALE, HEIGTH*SCALE));
+		game.setMaximumSize(new Dimension(WIDTH*SCALE, HEIGTH*SCALE)); 
+		game.setMinimumSize(new Dimension(WIDTH*SCALE, HEIGTH*SCALE)); 
+
+
 	}
 }
