@@ -4,6 +4,7 @@ import java.awt.Graphics;
 
 public abstract class Gobject {
 	protected int x, y;
+	protected int posX, posY;
 	protected ID id;
 	protected int velX, velY;
 
@@ -11,6 +12,16 @@ public abstract class Gobject {
 		this.x  = x;
 		this.y  = y;
 		this.id = id;
+		
+	}
+	public Gobject(int x, int y, ID id, int posX, int posY) {
+		this.x    = x;
+		this.y    = y;
+		this.id   = id;
+		this.velX = 0;
+		this.velY = 0;
+		this.posX = posX;
+		this.posY = posY;
 	}
 
 	public abstract void tick();
@@ -31,6 +42,10 @@ public abstract class Gobject {
 	public void setVelY(int velY) {
 		this.velY = velY;
 	}
+	public void setPosXY(int posX, int posY) {
+		this.posY = posY;
+		this.posX = posX;
+	}
 	public int getX() {
 		return x;
 	}
@@ -40,6 +55,7 @@ public abstract class Gobject {
 	public ID getID() {
 		return id;
 	}
+
 
 
 }

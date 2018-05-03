@@ -16,22 +16,26 @@ public class Game extends Canvas implements Runnable {
 	private Handler h;
 
 	public static BufferedImage ss;
+	public static BufferedImage sm;
 
 	public Game() {
 		h = new Handler();
 
 		ImageLoader loader = new ImageLoader();
 		try {
+			sm = loader.load("/Map003.png");
 			ss = loader.load("/testcharacter.png");
 		}catch (Exception e) {
 			e.printStackTrace();	
+			System.out.println("Image not loeaded, restart the game");
 		}
 		
 		this.addKeyListener(new KInput(h));
 
 		new Window(WIDTH, HEIGTH, "Bread of the Wild", this);
 
-		h.addObject(new PJ(WIDTH/2-32, HEIGTH/2-32, ID.Player));
+		h.addObject(new Mapa(0, 0, ID.Mapa));
+		h.addObject(new PJ(WIDTH/2-32, HEIGTH/2-32, ID.Player, 2, 3));
 	}
 
 	public synchronized void start() {
@@ -89,9 +93,6 @@ public class Game extends Canvas implements Runnable {
 		}	
 
 		Graphics g = bs.getDrawGraphics();
-
-		g.setColor(Color.black);
-		g.fillRect(0,0, WIDTH, HEIGTH);
 
 		h.render(g);
 
