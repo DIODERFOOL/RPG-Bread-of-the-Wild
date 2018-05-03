@@ -6,20 +6,21 @@ import java.awt.image.BufferedImage;
 
 public class PJ extends Gobject {
 
-	private BufferedImage testImage;
+	private BufferedImage pj_image;
+	SpriteSheet ss = new SpriteSheet(Game.ss);
 
-	public PJ(int x, int y, ID id) {
-		super(x, y, id);
-		testImage = ImageLoader.loadImage("../res/IMG/Sprite_map_test.png");
-
+	public PJ(int x, int y, ID id, int posX, int posY) {
+		super(x, y, id, posX, posY);
+		pj_image = ss.grabImage(posX ,posY , 64, 64);
 	}
 
 	public void tick() {
-		x += velX;
-		y += velY;
+		pj_image = ss.grabImage(posX, posY, 64, 64);
 	}
 	public void render(Graphics g) {
-		g.drawImage(testImage, x, y, null);
-		g.fillRect(x, y, 32, 32);
+		//g.setColor(Color.white);
+		//g.fillRect(x, y, 100, 100);
+		
+		g.drawImage(pj_image, x, y, null);
 	}
 }
