@@ -10,7 +10,7 @@ public class Mapa extends Gobject {
 
 	public Mapa(int x, int y, ID id) {
 		super(x, y, id);
-		map_images = sm.grabImageM(0, 0, 1440, 1440);
+		map_images = sm.grabImageM(x, y, 1440, 1440);
 	}
 	public void tick() {
 		x += velX;

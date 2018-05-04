@@ -46,8 +46,8 @@ public class Game extends Canvas implements Runnable {
 
 		ImageLoader loader = new ImageLoader();
 		try {
-			sm = loader.load("/Map002.png");
-			ss = loader.load("/testcharacter.png");
+			sm = loader.load("/res/Map002.png");
+			ss = loader.load("/res/testcharacter.png");
 		}catch (Exception e) {
 			e.printStackTrace();	
 			System.out.println("Image not loaded, restart the game");
