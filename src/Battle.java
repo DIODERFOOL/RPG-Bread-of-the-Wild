@@ -15,7 +15,6 @@ public class Battle{
   public Rectangle item = new Rectangle(50,500, 120, 40);
   public Rectangle run = new Rectangle(50, 550, 120, 40);
 
-  //public Rectangle backButton = new Rectangle(, 310, 200, 50);
   //public Rectangle creditsButton = new Rectangle(Game.WIDTH/5+120, 360, 200, 50);
 
   ImageLoader loader = new ImageLoader();
@@ -60,7 +59,5 @@ public class Battle{
 
 	}
 
-  public void renderfight(Graphics g){
 
-  }
 }

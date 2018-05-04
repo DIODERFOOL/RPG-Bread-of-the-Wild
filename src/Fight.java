@@ -14,8 +14,7 @@ public class Fight{
   public Rectangle attack = new Rectangle (50, 450, 240,40);
   public Rectangle specialAttack = new Rectangle(50,500, 240, 40);
   public Rectangle defend = new Rectangle(50, 550, 240, 40);
-
-  //public Rectangle backButton = new Rectangle(, 310, 200, 50);
+  public Rectangle backButton = new Rectangle(720, 590, 100, 40);
   //public Rectangle creditsButton = new Rectangle(Game.WIDTH/5+120, 360, 200, 50);
 
   ImageLoader loader = new ImageLoader();
@@ -57,6 +56,10 @@ public class Fight{
 
 		g.drawString(">Defend", defend.x + 15, defend.y + 30);
 		g2d.draw(defend);
+
+    g.drawString("Back", backButton.x + 15, backButton.y +30);
+    g2d.draw(backButton);
+
 
 	}
 

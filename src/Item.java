@@ -15,6 +15,7 @@ public class Item{
   public Rectangle item2 = new Rectangle(50,490, 120, 30);
   public Rectangle item3 = new Rectangle(50, 540, 120, 30);
   public Rectangle item4 = new Rectangle(50, 590, 120, 30);
+  public Rectangle backButton = new Rectangle(720, 590, 100, 40);
 
 
   //public Rectangle backButton = new Rectangle(, 310, 200, 50);
@@ -63,9 +64,9 @@ public class Item{
     g.drawString(">Item4", item4.x + 15, item4.y + 26);
     g2d.draw(item4);
 
+    g.drawString("Back", backButton.x + 15, backButton.y +30);
+    g2d.draw(backButton);
+
 	}
 
-  public void renderfight(Graphics g){
-
-  }
 }

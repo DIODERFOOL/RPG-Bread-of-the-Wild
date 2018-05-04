@@ -25,14 +25,12 @@ if(Game.State == Game.STATE.BATTLE){
 	if(mx >= 51 && mx <=170){
 		if(my >= 450 && my <= 490){
 			Game.State = Game.STATE.FIGHT;
-			    System.out.println("Fight funciona");
 		}
 	}
 
 	//Item
 	if(mx >= 50 && mx <= 170){
 		if(my >= 500 && my <= 540){
-    System.out.println("Item funciona");
 			Game.State = Game.STATE.ITEM;
 		}
 	}
@@ -40,7 +38,6 @@ if(Game.State == Game.STATE.BATTLE){
 	//Run
 	if(mx >= 50 && mx <= 170){
 		if(my >= 550 && my <= 590){
-			    System.out.println("Run funciona");
 			Game.State = Game.STATE.GAME;
 		}
 	}
