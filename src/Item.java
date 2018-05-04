@@ -9,11 +9,13 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 
 
-public class Battle{
+public class Item{
 
-  public Rectangle fight = new Rectangle (50, 450, 120,40);
-  public Rectangle item = new Rectangle(50,500, 120, 40);
-  public Rectangle run = new Rectangle(50, 550, 120, 40);
+  public Rectangle item1 = new Rectangle (50, 440, 120,30);
+  public Rectangle item2 = new Rectangle(50,490, 120, 30);
+  public Rectangle item3 = new Rectangle(50, 540, 120, 30);
+  public Rectangle item4 = new Rectangle(50, 590, 120, 30);
+
 
   //public Rectangle backButton = new Rectangle(, 310, 200, 50);
   //public Rectangle creditsButton = new Rectangle(Game.WIDTH/5+120, 360, 200, 50);
@@ -21,7 +23,7 @@ public class Battle{
   ImageLoader loader = new ImageLoader();
   public BufferedImage arena, muffin, enemy;
 
-  public Battle(){
+  public Item(){
     try {
       arena = loader.load("/battleArena.jpg");
       muffin = loader.load("/testMcMuffin.png");
@@ -49,14 +51,17 @@ public class Battle{
 		g.setFont(fnt1);
 		g.setColor(Color.white);
 
-		g.drawString(">Fight", fight.x + 15, fight.y + 30);
-		g2d.draw(fight);
+		g.drawString(">Item1", item1.x + 15, item1.y + 26);
+		g2d.draw(item1);
 
-		g.drawString(">Item", item.x + 15, item.y + 30);
-		g2d.draw(item);
+		g.drawString(">Item2", item2.x + 15, item2.y + 26);
+		g2d.draw(item2);
 
-		g.drawString(">Run", run.x + 15, run.y + 30);
-		g2d.draw(run);
+		g.drawString(">Item3", item3.x + 15, item3.y + 26);
+		g2d.draw(item3);
+
+    g.drawString(">Item4", item4.x + 15, item4.y + 26);
+    g2d.draw(item4);
 
 	}
 

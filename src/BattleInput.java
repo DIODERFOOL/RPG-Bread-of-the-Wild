@@ -20,21 +20,34 @@ public class BattleInput implements MouseListener{
 		int mx = e.getX();
 		int my = e.getY();
 
-		//Play button
-		if(mx >= Game.WIDTH/5+120 && mx <= Game.WIDTH/5+320){
-			if(my >= 150 && my <= 200){
-				//Pressed Play Button
-				Game.State = Game.STATE.GAME;
-			}
+if(Game.State == Game.STATE.BATTLE){
+	//Fight button
+	if(mx >= 51 && mx <=170){
+		if(my >= 450 && my <= 490){
+			Game.State = Game.STATE.FIGHT;
+			    System.out.println("Fight funciona");
 		}
+	}
 
-		//Quit button
-		if(mx >= Game.WIDTH/5+120 && mx <= Game.WIDTH/5+320){
-			if(my >= 310 && my <= 360){
-				//Pressed Quit Button
-				System.exit(1);
-			}
+	//Item
+	if(mx >= 50 && mx <= 170){
+		if(my >= 500 && my <= 540){
+    System.out.println("Item funciona");
+			Game.State = Game.STATE.ITEM;
 		}
+	}
+
+	//Run
+	if(mx >= 50 && mx <= 170){
+		if(my >= 550 && my <= 590){
+			    System.out.println("Run funciona");
+			Game.State = Game.STATE.GAME;
+		}
+	}
+
+}
+
+
 	}
 
 	public void mouseReleased(MouseEvent e){

@@ -35,15 +35,19 @@ public class Game extends Canvas implements Runnable {
 	public static enum STATE{
 		MENU,
 		GAME,
-    BATTLE
+    BATTLE,
+    ITEM,
+    FIGHT
 	};
 
-	public static STATE State = STATE.MENU;
+	public static STATE State = STATE.BATTLE;
 
 
 	/*-------------Battle stuff--------------*/
 
 private Battle battle;
+private Fight fight;
+private Item item;
 
   /*-------------------------------------*/
 
@@ -51,6 +55,8 @@ private Battle battle;
 		h = new Handler();
 		menu  = new Menu();
     battle =new Battle();
+    fight = new Fight();
+    item = new Item();
 
 		ImageLoader loader = new ImageLoader();
 		try {
@@ -62,7 +68,8 @@ private Battle battle;
 		}
 
 		this.addKeyListener(new KInput(h));
-		this.addMouseListener(new MenuInput() ); //Mouse Input //esto estaba comentado para que funcionara el mousework
+		this.addMouseListener(new MenuInput() ); //menu Input
+    this.addMouseListener(new BattleInput() ); //battle input
 
 		new Window(WIDTH, HEIGTH, "Bread of the Wild", this);
 
@@ -163,15 +170,18 @@ private Battle battle;
 
 		if(State == STATE.GAME){
 			h.render(g);
-    //  mousework(false);
 		}
 		else if(State == STATE.MENU){
 			menu.render(g);
-    //  mousework(true);
 
 		}else if(State == STATE.BATTLE){
       battle.render(g);
-    //  mousework(false);
+
+    }else if(State == STATE.FIGHT){
+      fight.render(g);
+
+    }else if(State == STATE.ITEM){
+      item.render(g);
     }
 
 
@@ -179,21 +189,6 @@ private Battle battle;
 		bs.show();
 	}
 
-/*  public void mousework(boolean mouse){
-
-      if(mouse==true){
-        System.out.println("ES VERDADERO NENE");
-        this.addMouseListener(new MenuInput() );
-      }else{
-        try{
-            this.addMouseListener(null);
-        }catch(Exception e){
-          System.out.println("Lo catcheo");
-        }
-
-      }
-
-  }*/
 
 
 	public static void main(String[] args) {
