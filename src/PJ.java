@@ -17,10 +17,11 @@ public class PJ extends Gobject {
 	public void tick() {
 		pj_image = ss.grabImage(posX, posY, 64, 64);
 	}
+	
 	public void render(Graphics g) {
 		//g.setColor(Color.white);
 		//g.fillRect(x, y, 100, 100);
-		
+
 		g.drawImage(pj_image, x, y, null);
 	}
 }

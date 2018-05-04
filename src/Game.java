@@ -8,6 +8,7 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.awt.Dimension;
+import java.awt.event.MouseListener;
 
 public class Game extends Canvas implements Runnable {
 
@@ -17,6 +18,7 @@ public class Game extends Canvas implements Runnable {
 
 	private Thread thread;
 	private boolean runnig = false;
+//  private boolean mouse = false;
 
 	public int tickCount = 0;
 
@@ -32,29 +34,35 @@ public class Game extends Canvas implements Runnable {
 	private Menu menu;
 	public static enum STATE{
 		MENU,
-		GAME
+		GAME,
+    BATTLE
 	};
 
-	public static STATE State = STATE.MENU; 
+	public static STATE State = STATE.MENU;
 
 
-	/*----------------------------------*/
+	/*-------------Battle stuff--------------*/
+
+private Battle battle;
+
+  /*-------------------------------------*/
 
 	public Game() {
 		h = new Handler();
 		menu  = new Menu();
+    battle =new Battle();
 
 		ImageLoader loader = new ImageLoader();
 		try {
 			sm = loader.load("/Map002.png");
 			ss = loader.load("/testcharacter.png");
 		}catch (Exception e) {
-			e.printStackTrace();	
+			e.printStackTrace();
 			System.out.println("Image not loaded, restart the game");
 		}
-		
+
 		this.addKeyListener(new KInput(h));
-		this.addMouseListener(new MenuInput() ); //Mouse Input
+		this.addMouseListener(new MenuInput() ); //Mouse Input //esto estaba comentado para que funcionara el mousework
 
 		new Window(WIDTH, HEIGTH, "Bread of the Wild", this);
 
@@ -82,12 +90,12 @@ public class Game extends Canvas implements Runnable {
 		double amountOfTicks = 60.0;
 		double ns = 1000000000 / amountOfTicks;
 
-		double delta = 0;  
+		double delta = 0;
 		long timer = System.currentTimeMillis();
-		
+
 		int frames = 0;
-		int ticks = 0; 
-		
+		int ticks = 0;
+
 		while(runnig) {
 			long now = System.nanoTime();
 			delta += (now - lastTime) / ns;
@@ -141,38 +149,61 @@ public class Game extends Canvas implements Runnable {
 		if(bs == null) {
 			this.createBufferStrategy(3);
 			return;
-		}	
+		}
 
 		Graphics g = bs.getDrawGraphics();
 
 
 		h.render(g);
 
-		
+
 
 		g.setColor(Color.black);
 		g.fillRect(0,0, WIDTH, HEIGTH);
 
 		if(State == STATE.GAME){
 			h.render(g);
+    //  mousework(false);
 		}
 		else if(State == STATE.MENU){
 			menu.render(g);
-		}
+    //  mousework(true);
+
+		}else if(State == STATE.BATTLE){
+      battle.render(g);
+    //  mousework(false);
+    }
 
 
 		g.dispose();
 		bs.show();
 	}
 
+/*  public void mousework(boolean mouse){
+
+      if(mouse==true){
+        System.out.println("ES VERDADERO NENE");
+        this.addMouseListener(new MenuInput() );
+      }else{
+        try{
+            this.addMouseListener(null);
+        }catch(Exception e){
+          System.out.println("Lo catcheo");
+        }
+
+      }
+
+  }*/
+
 
 	public static void main(String[] args) {
-		
+
 		Game game = new Game();
 		game.setPreferredSize(new Dimension(WIDTH*SCALE, HEIGTH*SCALE));
-		game.setMaximumSize(new Dimension(WIDTH*SCALE, HEIGTH*SCALE)); 
-		game.setMinimumSize(new Dimension(WIDTH*SCALE, HEIGTH*SCALE)); 
+		game.setMaximumSize(new Dimension(WIDTH*SCALE, HEIGTH*SCALE));
+		game.setMinimumSize(new Dimension(WIDTH*SCALE, HEIGTH*SCALE));
 
 
 	}
+
 }

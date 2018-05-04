@@ -3,9 +3,7 @@ package botw;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class MenuInput implements MouseListener{
-
-
+public class BattleInput implements MouseListener{
 
 	public void mouseClicked(MouseEvent e){
 
