@@ -9,8 +9,8 @@ public class MapLoader {
 		this.map = sm;
 	}
 
-	public BufferedImage grabImageM(int col, int row, int width, int height) {
-		BufferedImage img = map.getSubimage(0, 0, width, height);
+	public BufferedImage grabImageM(int x, int y, int width, int height) {
+		BufferedImage img = map.getSubimage(x, y, width, height);
 		return img;
 	}
 }
