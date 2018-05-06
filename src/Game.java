@@ -70,6 +70,7 @@ private Item item;
 		this.addKeyListener(new KInput(h));
 		this.addMouseListener(new MenuInput() ); //menu Input
     this.addMouseListener(new BattleInput() ); //battle input
+    this.addMouseListener(new FightInput() ); //fight input
 
 		new Window(WIDTH, HEIGTH, "Bread of the Wild", this);
 

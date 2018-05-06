@@ -8,17 +8,19 @@ interface Character{
 	void setLife(int life);
 	int getLife();
 
-	void setExperience(double xp);
-	double getExperience();
+	void setDamage(int dmg);
+	int getDamage();
 
-	void setDamage(double dmg);
-	double getDamage();
+	void setDefense(int dfs);
+	int getDefense();
 
-	void setDefense(double dfs);
-	double getDefense();
+	void setLvl(int lvl);
+	int getLvl();
 
-	void setArmor(double amr);
-	double getArmor();
+	void attack(int dmg, int hp);
+
+	void defend(int dmg, int dfs);
+
 
 	/*void setWeapon(Weapons wpn);
 	Weapons getWeapon();*/

@@ -15,6 +15,8 @@ public class Fight{
   public Rectangle specialAttack = new Rectangle(50,500, 240, 40);
   public Rectangle defend = new Rectangle(50, 550, 240, 40);
   public Rectangle backButton = new Rectangle(720, 590, 100, 40);
+
+  //Enemy enemy =new Enemy("");
   //public Rectangle creditsButton = new Rectangle(Game.WIDTH/5+120, 360, 200, 50);
 
   ImageLoader loader = new ImageLoader();

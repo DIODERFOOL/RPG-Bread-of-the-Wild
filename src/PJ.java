@@ -8,6 +8,7 @@ public class PJ extends Gobject {
 
 	private BufferedImage pj_image;
 	SpriteSheet ss = new SpriteSheet(Game.ss);
+	Player player;
 
 	public PJ(int x, int y, ID id, int posX, int posY) {
 		super(x, y, id, posX, posY);
@@ -17,11 +18,12 @@ public class PJ extends Gobject {
 	public void tick() {
 		pj_image = ss.grabImage(posX, posY, 64, 64);
 	}
-	
+
 	public void render(Graphics g) {
 		//g.setColor(Color.white);
 		//g.fillRect(x, y, 100, 100);
-
 		g.drawImage(pj_image, x, y, null);
 	}
+
+
 }

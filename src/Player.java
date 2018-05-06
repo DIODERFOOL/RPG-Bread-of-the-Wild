@@ -3,19 +3,19 @@ package botw;
 public class Player implements Character{
 
 	private String name;
-	private int hp, lvl;
-	private double dmg, dfs, amr, xp;
+	private int hp, dmg, dfs, xp, lvl;
 
 	// private Weapons wpn;
 	//private Items itm
 
-	public Player(String name, int hp, double dmg, double dfs, double amr, int lvl, double xp){	
+	public Player(String name, int hp, int dmg, int dfs, int xp, int lvl){
 		this.name = name;
 		this.hp = hp;
 		this.dmg = dmg;
 		this.dfs = dfs;
-		this.amr = amr;
 		this.xp = xp;
+		this.lvl = lvl;
+
 		//this.wpn = wpn;
 		//this.itm = tim;
 	}
@@ -34,40 +34,36 @@ public class Player implements Character{
 		return hp;
 	}
 
-	public void setDamage(double dmg){
+	public void setDamage(int dmg){
 		this.dmg = dmg;
 	}
-	public double getDamage(){
+	public int getDamage(){
 		return dmg;
 	}
 
-	public void setDefense(double dfs){
+	public void setDefense(int dfs){
 		this.dfs = dfs;
 	}
-	public double getDefense(){
+	public int getDefense(){
 		return dfs;
 	}
 
-	public void setArmor(double amr){
-		this.amr = amr;
-	}
-	public double getArmor(){
-		return amr;
-	}
-
-	public void setExperience(double xp){
-		this.xp = xp;
-	}
-	public double getExperience(){
-		return xp;
+	public int getLvl(){
+		return lvl;
 	}
 
 	public void setLvl(int lvl){
-		this.lvl = lvl;
+		this.lvl=lvl;
 	}
-	public double getLvl(){
-		return lvl;
+
+	public void setXp(int xp){
+		this.xp=xp;
 	}
+
+	public int getXp(int xp){
+		return xp;
+	}
+
 
 	/*public void setWeapon(Weapons wpn){
 		this.wpn = wpn;

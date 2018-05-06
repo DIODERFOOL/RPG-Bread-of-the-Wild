@@ -3,16 +3,14 @@ package botw;
 public class Enemy implements Character{
 
 	private String name;
-	private int hp;
-	private double dmg, dfs, amr, xp;
+	private int hp, dmg, dfs,lvl;
 	// private Weapons wpn;
 
-	public Enemy(String name, int hp, double dmg, double dfs, double amr){	
+	public Enemy(String name, int hp, int dmg, int dfs, int lvl){
 		this.name = name;
 		this.hp = hp;
 		this.dmg = dmg;
 		this.dfs = dfs;
-		this.amr = amr;
 		//this.wpn = wpn;
 	}
 
@@ -30,33 +28,29 @@ public class Enemy implements Character{
 		return hp;
 	}
 
-	public void setDamage(double dmg){
+	public void setDamage(int dmg){
 		this.dmg = dmg;
 	}
-	public double getDamage(){
+	public int getDamage(){
 		return dmg;
 	}
 
-	public void setExperience(double xp){
-		this.xp = xp;
-	}
-	public double getExperience(){
-		return xp;
-	}
 
-	public void setDefense(double dfs){
+	public void setDefense(int dfs){
 		this.dfs = dfs;
 	}
-	public double getDefense(){
+	public int getDefense(){
 		return dfs;
 	}
 
-	public void setArmor(double amr){
-		this.amr = amr;
+
+	/*public int attack(int dmg, int hp){
+
 	}
-	public double getArmor(){
-		return amr;
-	}
+
+	public int defend(int dmg, int dfs){
+
+	}*/
 
 	/*public void setWeapon(Weapons wpn){
 		this.wpn = wpn;
