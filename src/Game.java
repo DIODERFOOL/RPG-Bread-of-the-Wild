@@ -203,7 +203,7 @@ public class Game extends Canvas implements Runnable{
 				h = (Handler)ois.readObject();
 				ois.close();
 
-				tick();
+				//tick();
 
 			}catch(IOException exception){
 
