@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 public class KInput extends KeyAdapter {
 
 	private Handler h;
+	private PauseMenu pause;
 
 	public KInput(Handler h) {
 		this.h = h;
@@ -23,8 +24,8 @@ public class KInput extends KeyAdapter {
 				if (key == KeyEvent.VK_S) to.setVelY(-3);
 				if (key == KeyEvent.VK_A) to.setVelX( 3);
 				if (key == KeyEvent.VK_D) to.setVelX(-3);
-
 			}
+
 			if (to.getID() == ID.Player) {
 				if (key == KeyEvent.VK_W) to.setPosXY(1, 1);
 				if (key == KeyEvent.VK_S) to.setPosXY(3, 1);
@@ -44,6 +45,13 @@ public class KInput extends KeyAdapter {
 				if (key == KeyEvent.VK_S) to.setVelY(0);
 				if (key == KeyEvent.VK_A) to.setVelX(0);
 				if (key == KeyEvent.VK_D) to.setVelX(0);
+				
+				if(Game.State == Game.STATE.GAME || Game.State == Game.STATE.BATTLE){
+					if (key == KeyEvent.VK_ESCAPE){
+						Game.State = Game.STATE.PAUSE;
+						
+					} 
+				}
 
 			}
 		}

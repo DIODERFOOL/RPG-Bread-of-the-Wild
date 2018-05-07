@@ -34,31 +34,31 @@ public class Battle{
 
   public void render(Graphics g){
 
-		Graphics2D g2d = (Graphics2D)g;
+  	Graphics2D g2d = (Graphics2D)g;
     g.drawImage(arena,-9,-5,1100,675, null);
     g.drawImage(muffin, 100,170,250,250,null);
     g.drawImage(enemy, 550, 170,250,250,null);
 
-		Font fnt = new Font("arial", Font.BOLD, 30);
-		g.setFont(fnt);
-		g.setColor(Color.white);
-		g.drawString("McMuffin", 30, 30);
+  	Font fnt = new Font("arial", Font.BOLD, 30);
+  	g.setFont(fnt);
+  	g.setColor(Color.white);
+  	g.drawString("McMuffin", 30, 30);
     g.drawString("Spoiled Bread",650, 30);
 
-		Font fnt1 = new Font("arial", Font.PLAIN, 30);
-		g.setFont(fnt1);
-		g.setColor(Color.white);
+  	Font fnt1 = new Font("arial", Font.PLAIN, 30);
+  	g.setFont(fnt1);
+  	g.setColor(Color.white);
 
-		g.drawString(">Fight", fight.x + 15, fight.y + 30);
-		g2d.draw(fight);
+  	g.drawString(">Fight", fight.x + 15, fight.y + 30);
+  	g2d.draw(fight);
 
-		g.drawString(">Item", item.x + 15, item.y + 30);
-		g2d.draw(item);
+  	g.drawString(">Item", item.x + 15, item.y + 30);
+  	g2d.draw(item);
 
-		g.drawString(">Run", run.x + 15, run.y + 30);
-		g2d.draw(run);
+  	g.drawString(">Run", run.x + 15, run.y + 30);
+  	g2d.draw(run);
 
-	}
+  }
 
   public void renderfight(Graphics g){
     

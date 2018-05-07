@@ -3,8 +3,9 @@ package botw;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 
-public class PJ extends Gobject {
+public class PJ extends Gobject implements Serializable{
 
 	private BufferedImage pj_image;
 	SpriteSheet ss = new SpriteSheet(Game.ss);

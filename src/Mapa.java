@@ -2,8 +2,9 @@ package botw;
 
 import java.awt.image.BufferedImage;
 import java.awt.Graphics;
+import java.io.Serializable;
 
-public class Mapa extends Gobject {
+public class Mapa extends Gobject implements Serializable{
 	
 	private BufferedImage map_images;
 	MapLoader sm = new MapLoader(Game.sm);
