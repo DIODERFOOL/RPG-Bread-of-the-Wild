@@ -139,7 +139,7 @@ public class Game extends Canvas implements Runnable{
 		stop();
 	}
 
-	private static void tick() {
+	private void tick() {
 		tickCount++;
 
 		for(int i=0; i<pixels.length; i++){
