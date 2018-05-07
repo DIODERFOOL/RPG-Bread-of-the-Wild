@@ -9,6 +9,9 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.awt.Dimension;
 import java.awt.event.MouseListener;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -36,8 +39,10 @@ public class Game extends Canvas implements Runnable{
 	private BufferedImage image = new BufferedImage(WIDTH, HEIGTH, BufferedImage.TYPE_INT_RGB);
 	private int[] pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
 
-/*-------------Menu Stuff--------------*/
 	private Menu menu;
+	private PauseMenu pMenu;
+	private Battle battle;
+	
 	public static enum STATE{
 		MENU,
 		GAME,
@@ -46,22 +51,6 @@ public class Game extends Canvas implements Runnable{
 	};
 
 	public static STATE State = STATE.MENU;
-
-	private PauseMenu pMenu;
-/*----------------------------------------*/
-
-/*----------------------------------------*/
-	
-
-/*----------------------------------------*/
-
-
-
-/*-------------Battle stuff--------------*/
-
-	private Battle battle;
-
-/*---------------------------------------*/
 
 	public Game() {
 		h = new Handler();
@@ -150,7 +139,7 @@ public class Game extends Canvas implements Runnable{
 		stop();
 	}
 
-	private void tick() {
+	private static void tick() {
 		tickCount++;
 
 		for(int i=0; i<pixels.length; i++){
@@ -171,7 +160,6 @@ public class Game extends Canvas implements Runnable{
 		}
 
 		Graphics g = bs.getDrawGraphics();
-
 		h.render(g);
 
 		g.setColor(Color.black);
@@ -194,10 +182,9 @@ public class Game extends Canvas implements Runnable{
 		bs.show();
 	}
 
-
 	public static void Save(){
 		try{
-			FileOutputStream fas = new FileOutputStream("Game.botw");
+			FileOutputStream fas = new FileOutputStream(new File("307w.ju4nj0"));
 			ObjectOutputStream oos = new ObjectOutputStream(fas);
 			oos.writeObject(h);
 			oos.close();
@@ -207,18 +194,25 @@ public class Game extends Canvas implements Runnable{
 
 	public static void Load(){
 		JFileChooser fileChooser = new JFileChooser();
-		try{
-			File selectedFile = fileChooser.getSelectedFile();
-			FileInputStream fis= new FileInputStream(selectedFile);
-			ObjectInputStream ois=new ObjectInputStream(fis);
-			h = (Handler)ois.readObject();
-			ois.close();
+		int returnValue = fileChooser.showOpenDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+			try{
+				File selectedFile = fileChooser.getSelectedFile();
+				FileInputStream fis = new FileInputStream(selectedFile);
+				ObjectInputStream ois = new ObjectInputStream(fis);
+				h = (Handler)ois.readObject();
+				ois.close();
 
-		}catch(IOException exception){
+				tick();
 
-		}catch(ClassNotFoundException exception){
+			}catch(IOException exception){
+
+			}catch(ClassNotFoundException exception){
+
+			}
 		}
 	}
+
 
 	public static void main(String[] args) {
 

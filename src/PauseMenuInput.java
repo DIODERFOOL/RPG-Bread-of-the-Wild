@@ -5,6 +5,8 @@ import java.awt.event.MouseListener;
 
 public class PauseMenuInput implements MouseListener{
 
+	//Game game = new Game();
+
 	public void mouseClicked(MouseEvent e){
 
 	}
@@ -20,10 +22,6 @@ public class PauseMenuInput implements MouseListener{
 		int mx = e.getX();
 		int my = e.getY();
 
-		//public Rectangle contButton = new Rectangle(Game.WIDTH/5+120, 150, 200, 50);
-		//public Rectangle saveButton = new Rectangle(Game.WIDTH/5+120, 210, 200, 50);
-		//public Rectangle loadButton = new Rectangle(Game.WIDTH/5+120, 270, 200, 50);
-		//public Rectangle quitButton = new Rectangle(Game.WIDTH/5+120, 330, 200, 50);
 
 		//Check game state first
 		if(Game.State == Game.STATE.PAUSE){

@@ -5,6 +5,8 @@ import java.awt.event.MouseListener;
 
 public class MenuInput implements MouseListener{
 
+	//Game game = new Game();
+
 	public void mouseClicked(MouseEvent e){
 
 	}

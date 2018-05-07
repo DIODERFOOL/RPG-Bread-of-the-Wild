@@ -2,8 +2,9 @@ package botw;
 
 import java.util.LinkedList;
 import java.awt.Graphics;
+import java.io.Serializable;
 
-public class Handler {
+public class Handler implements Serializable{
 	LinkedList<Gobject> ob = new LinkedList<Gobject>();
 
 	public void tick() {
@@ -25,4 +26,5 @@ public class Handler {
 	public void removeObject(Gobject ob) {
 		this.ob.remove(ob);
 	}
+
 }

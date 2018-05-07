@@ -25,4 +25,7 @@ public class PJ extends Gobject implements Serializable{
 
 		g.drawImage(pj_image, x, y, null);
 	}
+
+
+
 }
