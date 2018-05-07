@@ -1,17 +1,17 @@
 package botw;
 
 public class Enemy implements Character{
+		private String name;
+		private int hp, dmg, dfs,lvl, mana;
 
-	private String name;
-	private int hp, dmg, dfs,lvl;
 	// private Weapons wpn;
 
 	public Enemy(String name, int hp, int dmg, int dfs, int lvl){
-		this.name = name;
-		this.hp = hp;
-		this.dmg = dmg;
-		this.dfs = dfs;
-		//this.wpn = wpn;
+		this.name=name;
+		this.hp=hp;
+		this.dmg=dmg;
+		this.dfs=dfs;
+		this.lvl=lvl;
 	}
 
 	public void setName(String name){
@@ -21,8 +21,8 @@ public class Enemy implements Character{
 		return name;
 	}
 
-	public void setLife(int hp){
-		this.hp = hp;
+	public void setLife(int dmg){
+		this.hp = this.hp-dmg;
 	}
 	public int getLife(){
 		return hp;
@@ -32,7 +32,7 @@ public class Enemy implements Character{
 		this.dmg = dmg;
 	}
 	public int getDamage(){
-		return dmg;
+		return dmg*lvl;
 	}
 
 
@@ -40,17 +40,31 @@ public class Enemy implements Character{
 		this.dfs = dfs;
 	}
 	public int getDefense(){
+		dfs=dfs*lvl;
 		return dfs;
 	}
 
+	public void setLvl(int lvl){
+		this.lvl=lvl;
+	}
 
-	/*public int attack(int dmg, int hp){
+	public int getLvl(){
+		return lvl;
+	}
+
+
+	public int getMana(){
+		return mana;
 
 	}
 
-	public int defend(int dmg, int dfs){
+	public void setMana(int mana){
+		this.mana=mana;
+	}
 
-	}*/
+	public int specialAttack(){
+		return 0;
+	}
 
 	/*public void setWeapon(Weapons wpn){
 		this.wpn = wpn;

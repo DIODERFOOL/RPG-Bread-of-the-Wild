@@ -1,6 +1,6 @@
 package botw;
 
-interface Character{
+public interface Character{
 
 	void setName(String name);
 	String getName();
@@ -17,9 +17,10 @@ interface Character{
 	void setLvl(int lvl);
 	int getLvl();
 
-	void attack(int dmg, int hp);
+	int getMana();
+	void setMana(int mana);
 
-	void defend(int dmg, int dfs);
+	int specialAttack();
 
 
 	/*void setWeapon(Weapons wpn);
