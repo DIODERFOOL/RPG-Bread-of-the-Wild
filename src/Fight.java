@@ -10,6 +10,7 @@ import javax.imageio.ImageIO;
 
 
 public class Fight{
+  private String pJname;
 
   public Rectangle attack = new Rectangle (50, 450, 240,40);
   public Rectangle specialAttack = new Rectangle(50,500, 240, 40);
@@ -33,6 +34,10 @@ public class Fight{
     }
   }
 
+  public void setText(String pJname){
+    this.pJname=pJname;
+  }
+
   public void render(Graphics g){
 
 		Graphics2D g2d = (Graphics2D)g;
@@ -44,7 +49,9 @@ public class Fight{
 		g.setFont(fnt);
 		g.setColor(Color.white);
 		g.drawString("McMuffin", 30, 30);
+    g.drawString("HP: "+ this.pJname, 30, 60);
     g.drawString("Spoiled Bread",650, 30);
+  //  g.drawString("HP :"+ fi.pJ.getName(),650, 60);
 
 		Font fnt1 = new Font("arial", Font.PLAIN, 30);
 		g.setFont(fnt1);

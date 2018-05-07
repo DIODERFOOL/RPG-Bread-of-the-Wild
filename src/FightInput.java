@@ -8,6 +8,7 @@ public class FightInput implements MouseListener{
 
 	Enemy enemy = new Enemy("Ugly Bagel", 100, 5, 2, 3);
 	Player pJ = new Player ("Frosty McMuffin", 200, 10, 10, 1, 30 );
+	Fight fight;
 
 	public void mouseClicked(MouseEvent e){
 
@@ -23,6 +24,8 @@ public class FightInput implements MouseListener{
 	public void mousePressed(MouseEvent e){
 		int mx = e.getX();
 		int my = e.getY();
+
+			fight.setText("hola");
 
 		if(Game.State == Game.STATE.FIGHT){
 			//Back button

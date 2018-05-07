@@ -12,7 +12,7 @@ public abstract class Gobject {
 		this.x  = x;
 		this.y  = y;
 		this.id = id;
-		
+
 	}
 	public Gobject(int x, int y, ID id, int posX, int posY) {
 		this.x    = x;

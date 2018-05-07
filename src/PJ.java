@@ -13,7 +13,7 @@ public class PJ extends Gobject implements Character{
 	SpriteSheet ss = new SpriteSheet(Game.ss);
 	Player player;
 
-	public PJ(int x, int y, ID id, int posX, int posY, String name, int hp, int dmg, int dfs, int lvl, int mana) {
+	public PJ(int x, int y, ID id, int posX, int posY, String name, int hp, int dmg, int dfs, int lvl, int mana){
 		super(x, y, id, posX, posY);
 		this.name = name;
 		this.hp = hp;
