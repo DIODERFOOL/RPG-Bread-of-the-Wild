@@ -10,7 +10,7 @@ public class KInput extends KeyAdapter {
 	public KInput(Handler h) {
 		this.h = h;
 	}
-	
+
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
 
@@ -26,10 +26,10 @@ public class KInput extends KeyAdapter {
 
 			}
 			if (to.getID() == ID.Player) {
-				if (key == KeyEvent.VK_W) to.setPosXY(1, 1);
-				if (key == KeyEvent.VK_S) to.setPosXY(3, 1);
-				if (key == KeyEvent.VK_A) to.setPosXY(2, 1);
-				if (key == KeyEvent.VK_D) to.setPosXY(4, 1);
+				if (key == KeyEvent.VK_W) to.setPosXY(2, 5);
+				if (key == KeyEvent.VK_S) to.setPosXY(1, 5);
+				if (key == KeyEvent.VK_A) to.setPosXY(4, 5);
+				if (key == KeyEvent.VK_D) to.setPosXY(3, 5);
 			}
 		}
 	}

@@ -1,5 +1,3 @@
-package botw;
-
 public interface Character{
 
 	void setName(String name);

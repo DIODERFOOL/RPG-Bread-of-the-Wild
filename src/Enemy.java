@@ -1,6 +1,8 @@
-package botw;
+
 
 public class Enemy implements Character{
+
+
 		private String name;
 		private int hp, dmg, dfs,lvl, mana;
 

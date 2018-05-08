@@ -71,7 +71,7 @@ private Item item;
 		new Window(WIDTH, HEIGTH, "Bread of the Wild", this);
 
 		h.addObject(new Mapa(0, 0, ID.Mapa));
-		h.addObject(new PJ(WIDTH/2-32, HEIGTH/2-32, ID.Player, 2, 3, "Frosty McMuffin", 200, 10, 10, 1, 30));
+		h.addObject(new PJ(WIDTH/2-32, HEIGTH/2-32, ID.Player, 1, 5, "Frosty McMuffin", 200, 10, 10, 1, 30));
 	}
 
 	public synchronized void start() {
