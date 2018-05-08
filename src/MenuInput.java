@@ -38,7 +38,17 @@ public class MenuInput implements MouseListener{
 					System.exit(1);
 				}
 			}
+
+
+		//Load Button POR MIENTRAS
+		if(mx >= Game.WIDTH/5+120 && mx <= Game.WIDTH/5+320){
+			if(my >= 260 && my <= 310){
+				System.out.println("hola");
+				new GameBattle();
+			}
 		}
+
+	}
 		}
 
 
