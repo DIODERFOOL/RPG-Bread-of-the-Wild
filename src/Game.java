@@ -35,12 +35,12 @@ public class Game extends Canvas implements Runnable {
 	public static enum STATE{
 		MENU,
 		GAME,
-    BATTLE,
-    ITEM,
-    FIGHT
+    	BATTLE,
+    	ITEM,
+    	FIGHT
 	};
 
-	public static STATE State = STATE.BATTLE;
+	public static STATE State = STATE.MENU;
 
 
 	/*-------------Battle stuff--------------*/
@@ -54,14 +54,12 @@ private Item item;
 	public Game() {
 		h = new Handler();
 		menu  = new Menu();
-    battle =new Battle();
-    fight = new Fight();
-    item = new Item();
+   		 item = new Item();
 
 		ImageLoader loader = new ImageLoader();
 		try {
 			sm = loader.load("/Map002.png");
-			ss = loader.load("/testcharacter.png");
+			ss = loader.load("/spritesheet.png");
 		}catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("Image not loaded, restart the game");
@@ -69,8 +67,6 @@ private Item item;
 
 		this.addKeyListener(new KInput(h));
 		this.addMouseListener(new MenuInput() ); //menu Input
-    this.addMouseListener(new BattleInput() ); //battle input
-    this.addMouseListener(new FightInput() ); //fight input
 
 		new Window(WIDTH, HEIGTH, "Bread of the Wild", this);
 
