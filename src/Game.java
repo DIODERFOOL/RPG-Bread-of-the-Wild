@@ -9,8 +9,18 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.awt.Dimension;
 import java.awt.event.MouseListener;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.IOException;
+import java.io.Serializable;
 
-public class Game extends Canvas implements Runnable {
+public class Game extends Canvas implements Runnable{
 
 	public static final int WIDTH = 900, HEIGTH = WIDTH/12*9;
 	public static final int SCALE = 2;
@@ -18,45 +28,43 @@ public class Game extends Canvas implements Runnable {
 
 	private Thread thread;
 	private boolean runnig = false;
-//  private boolean mouse = false;
 
 	public int tickCount = 0;
 
-	private Handler h;
+	private static Handler h;
 
 	public static BufferedImage ss;
 	public static BufferedImage sm;
 
-	private BufferedImage persona = new BufferedImage(WIDTH, HEIGTH, BufferedImage.TYPE_INT_RGB);
-	private int[] pixels = ((DataBufferInt)persona.getRaster().getDataBuffer()).getData();
+	private BufferedImage image = new BufferedImage(WIDTH, HEIGTH, BufferedImage.TYPE_INT_RGB);
+	private int[] pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
 
-/*----------Main Menu Stuff--------------*/
 	private Menu menu;
+	private PauseMenu pMenu;
+	private Battle battle;
+	private Fight fight;
+	private Item item;
+	
 	public static enum STATE{
 		MENU,
 		GAME,
     	BATTLE,
+    	PAUSE,
     	ITEM,
     	FIGHT
 	};
 
 	public static STATE State = STATE.MENU;
 
-
-	/*-------------Battle stuff--------------*/
-
-private Battle battle;
-private Fight fight;
-private Item item;
-
-  /*-------------------------------------*/
-
 	public Game() {
 		h = new Handler();
 		menu  = new Menu();
-   		 item = new Item();
+		pMenu = new PauseMenu();
+    	battle = new Battle();
+
 
 		ImageLoader loader = new ImageLoader();
+
 		try {
 			sm = loader.load("/Map002.png");
 			ss = loader.load("/spritesheet.png");
@@ -67,6 +75,8 @@ private Item item;
 
 		this.addKeyListener(new KInput(h));
 		this.addMouseListener(new MenuInput() ); //menu Input
+		this.addMouseListener(new PauseMenuInput() ); 
+
 
 		new Window(WIDTH, HEIGTH, "Bread of the Wild", this);
 
@@ -88,6 +98,7 @@ private Item item;
 			e.printStackTrace();
 		}
 	}
+
 
 	public void run() {
 		long lastTime = System.nanoTime();
@@ -124,8 +135,6 @@ private Item item;
 				frames ++;
 			}
 
-			//if(runnig)
-
 			if(System.currentTimeMillis() - timer >= 1000) {
 				timer += 1000;
 				System.out.println("FPS: " + frames + " TICKS(Updates): " + ticks);
@@ -133,8 +142,10 @@ private Item item;
 				ticks = 0;
 			}
 		}
+
 		stop();
 	}
+
 
 	private void tick() {
 		tickCount++;
@@ -150,17 +161,13 @@ private Item item;
 
 	private void render() {
 		BufferStrategy bs = this.getBufferStrategy();
+
 		if(bs == null) {
 			this.createBufferStrategy(3);
 			return;
 		}
 
 		Graphics g = bs.getDrawGraphics();
-
-
-		h.render(g);
-
-
 
 		g.setColor(Color.black);
 		g.fillRect(0,0, WIDTH, HEIGTH);
@@ -170,26 +177,60 @@ private Item item;
 		}
 		else if(State == STATE.MENU){
 			menu.render(g);
+		}
+		else if(State == STATE.BATTLE){
+      		battle.render(g);
+    	}
+    	else if(State == STATE.PAUSE){
+    		pMenu.render(g);
+      	}
+		else if(State == STATE.BATTLE){
+			battle.render(g);
 
-		}else if(State == STATE.BATTLE){
-      battle.render(g);
+		}else if(State == STATE.FIGHT){
+			fight.render(g);
 
-    }else if(State == STATE.FIGHT){
-      fight.render(g);
-
-    }else if(State == STATE.ITEM){
-      item.render(g);
-    }
-
+		}else if(State == STATE.ITEM){
+			item.render(g);
+		}
 
 		g.dispose();
 		bs.show();
 	}
 
+	public static void Save(){
+		try{
+			FileOutputStream fas = new FileOutputStream(new File("307w.ju4nj0"));
+			ObjectOutputStream oos = new ObjectOutputStream(fas);
+			oos.writeObject(h);
+			oos.close();
+		}
+		catch(IOException exception){}
+	}
 
+	public static void Load(){
+		JFileChooser fileChooser = new JFileChooser();
+		int returnValue = fileChooser.showOpenDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+			try{
+				File selectedFile = fileChooser.getSelectedFile();
+				FileInputStream fis = new FileInputStream(selectedFile);
+				ObjectInputStream ois = new ObjectInputStream(fis);
+				h = (Handler)ois.readObject();
+				ois.close();
+
+				Game.State = Game.STATE.GAME;
+				//render();
+
+			}catch(IOException exception){
+
+			}catch(ClassNotFoundException exception){
+
+			}
+		}
+	}
 
 	public static void main(String[] args) {
-
 		Game game = new Game();
 		game.setPreferredSize(new Dimension(WIDTH*SCALE, HEIGTH*SCALE));
 		game.setMaximumSize(new Dimension(WIDTH*SCALE, HEIGTH*SCALE));

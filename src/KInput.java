@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 public class KInput extends KeyAdapter {
 
 	private Handler h;
+	private PauseMenu pause;
 
 	public KInput(Handler h) {
 		this.h = h;
@@ -16,7 +17,6 @@ public class KInput extends KeyAdapter {
 
 		for (int i = 0; i < h.ob.size(); i++) {
 			Gobject to = h.ob.get(i);
-
 
 			if (to.getID() == ID.Mapa) {
 				if (key == KeyEvent.VK_W) to.setVelY( 3);
@@ -47,6 +47,12 @@ public class KInput extends KeyAdapter {
 
 			}
 		}
+
+		if(Game.State == Game.STATE.GAME || Game.State == Game.STATE.BATTLE){
+			if (key == KeyEvent.VK_ESCAPE){
+				Game.State = Game.STATE.PAUSE;
+			} 
+		}		
 	}
 
 }

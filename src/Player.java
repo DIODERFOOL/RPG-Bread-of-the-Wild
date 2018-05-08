@@ -6,7 +6,7 @@ public class Player implements Character{
 		private String name;
 		private int hp, dmg, dfs,lvl, xp, mana;
 
-	// private Weapons wpn;
+	//private Weapons wpn;
 	//private Items itm
 
 	public Player(String name, int hp, int dmg, int dfs, int lvl, int mana){
